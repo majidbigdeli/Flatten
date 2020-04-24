@@ -112,7 +112,8 @@ namespace ConsoleApp2
                         NextCode = node.NextCode,
                         ISBack = false,
                         ParentId = parentId,
-                        Key = null
+                        Key = null,
+                        HasBranch = node.IVRBranches?.Count > 0
                     };
                     flatList.Add(n);
 
@@ -128,7 +129,9 @@ namespace ConsoleApp2
                                 NextCode = item.IVRTree?.NextCode,
                                 ISBack = item.ISBack,
                                 ParentId = _id,
-                                Key = item.Key
+                                Key = item.Key,
+                                HasBranch = item.IVRTree?.IVRBranches?.Count > 0
+
                             };
                             flatList.Add(n1);
                             flatten(item.IVRTree, flatList, _Id2);
@@ -151,7 +154,8 @@ namespace ConsoleApp2
                                 NextCode = item.IVRTree?.NextCode,
                                 ISBack = item.ISBack,
                                 ParentId = parentId,
-                                Key = item.Key
+                                Key = item.Key,
+                                HasBranch = item.IVRTree?.IVRBranches?.Count > 0
                             };
                             flatList.Add(n1);
                             flatten(item.IVRTree, flatList, _Id2);
@@ -217,7 +221,7 @@ namespace ConsoleApp2
         public string NextCode { get; set; }
         public string Key { get; set; }
         public bool ISBack { get; set; }
-
+        public bool HasBranch { get; set; }
     }
 
 
